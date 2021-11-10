@@ -1,12 +1,16 @@
 import React from "react";
 import Header from "./components/Header";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import Home from "./components/Home";
 
 const Router: React.FC = () => {
   return (
-    <Switch>
+    <>
       <Header />
-    </Switch>
+      <Switch>
+        <Route exact component={Home} />
+      </Switch>
+    </>
   );
 };
 
