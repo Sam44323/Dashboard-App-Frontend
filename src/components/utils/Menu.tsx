@@ -15,7 +15,12 @@ const MenuContainer: React.FC<MenuProps> = ({ items, clickHandler, name }) => {
       overlay={
         <Menu>
           {items.map((item, index) => (
-            <Menu.Item key={index} onClick={() => clickHandler(item, name)}>
+            <Menu.Item
+              key={index}
+              onClick={() =>
+                clickHandler(name === "students" ? item.slice(1) : item, name)
+              }
+            >
               {item}
             </Menu.Item>
           ))}

@@ -32,23 +32,30 @@ const Options: React.FC = () => {
             clickHandler={updateQueryHandler}
           />
           <MenuContainer
-            items={["WB", "AP", "GJ", "RJ", "JK", "SK", "NG", "KL"]}
-            name="location"
+            items={[
+              "<100",
+              ">=100",
+              ">=500",
+              ">=900",
+              ">=1000",
+              ">=1500",
+              ">=3000",
+            ]}
+            name="students"
             clickHandler={updateQueryHandler}
           />
           <MenuContainer
-            items={["WB", "AP", "GJ", "RJ", "JK", "SK", "NG", "KL"]}
-            name="location"
-            clickHandler={updateQueryHandler}
-          />
-          <MenuContainer
-            items={["WB", "AP", "GJ", "RJ", "JK", "SK", "NG", "KL"]}
-            name="location"
-            clickHandler={updateQueryHandler}
-          />
-          <MenuContainer
-            items={["WB", "AP", "GJ", "RJ", "JK", "SK", "NG", "KL"]}
-            name="location"
+            items={[
+              "CS",
+              "BCOM",
+              "BBA",
+              "MPhiL",
+              "DPhil",
+              "MSC",
+              "MBA",
+              "MCOM",
+            ]}
+            name="Course"
             clickHandler={updateQueryHandler}
           />
         </section>
