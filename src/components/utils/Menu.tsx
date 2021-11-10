@@ -5,9 +5,15 @@ interface MenuProps {
   items: string[];
   clickHandler: (optionName: string, value: any) => void;
   name: string;
+  sideName: string;
 }
 
-const MenuContainer: React.FC<MenuProps> = ({ items, clickHandler, name }) => {
+const MenuContainer: React.FC<MenuProps> = ({
+  items,
+  clickHandler,
+  name,
+  sideName,
+}) => {
   return (
     <Dropdown
       placement="bottomLeft"
@@ -34,6 +40,7 @@ const MenuContainer: React.FC<MenuProps> = ({ items, clickHandler, name }) => {
         }}
       >
         {name}
+        {sideName && <span>({sideName})</span>}
       </Button>
     </Dropdown>
   );
