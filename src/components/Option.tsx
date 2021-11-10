@@ -1,16 +1,15 @@
 import React from "react";
 import styles from "../styles/Options.module.scss";
 import MenuContainer from "./utils/Menu";
+import { Input } from "antd";
 
 const currentQuery = new Map<string, any>();
 const Options: React.FC = () => {
   const [showFilters, setShowFilters] = React.useState(false);
-  const [state, setState] = React.useState(false);
+  const [collegeName, setCollegeName] = React.useState<string>("");
 
-  const updateQueryHandler = (optionName: string, value: any) => {
+  const updateQueryHandler = (optionName: string, value: any) =>
     currentQuery.set(optionName, value);
-    setState((prev) => !prev);
-  };
 
   return (
     <div className={styles.OptionContainer}>
@@ -19,6 +18,14 @@ const Options: React.FC = () => {
       </h1>
       {showFilters && (
         <section>
+          <Input.Search
+            placeholder="College Name"
+            value={collegeName}
+            onChange={(e) => setCollegeName(e.target.value)}
+            style={{
+              width: "60%",
+            }}
+          />
           <MenuContainer
             items={["WB", "AP", "GJ", "RJ", "JK", "SK", "NG", "KL"]}
             name="location"
