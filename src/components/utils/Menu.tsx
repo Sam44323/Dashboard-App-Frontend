@@ -18,7 +18,7 @@ const MenuContainer: React.FC<MenuProps> = ({ items, clickHandler, name }) => {
             <Menu.Item
               key={index}
               onClick={() =>
-                clickHandler(name === "students" ? item.slice(1) : item, name)
+                clickHandler(name, name === "students" ? item.slice(1) : item)
               }
             >
               {item}

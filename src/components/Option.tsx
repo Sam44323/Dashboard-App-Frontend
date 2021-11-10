@@ -2,21 +2,14 @@ import React from "react";
 import styles from "../styles/Options.module.scss";
 import MenuContainer from "./utils/Menu";
 
+const currentQuery = new Map<string, any>();
 const Options: React.FC = () => {
   const [showFilters, setShowFilters] = React.useState(false);
-  const [currentQuery, setCurrentQuery] = React.useState<
-    {
-      name: string;
-      value: any;
-    }[]
-  >([{}] as any);
+  const [state, setState] = React.useState(false);
 
   const updateQueryHandler = (optionName: string, value: any) => {
-    setCurrentQuery((prev) =>
-      !prev.includes({ name: optionName, value })
-        ? [...prev, { name: optionName, value }]
-        : prev
-    );
+    currentQuery.set(optionName, value);
+    setState((prev) => !prev);
   };
 
   return (
