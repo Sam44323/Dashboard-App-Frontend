@@ -3,6 +3,7 @@ import styles from "../styles/Options.module.scss";
 import MenuContainer from "./utils/Menu";
 
 const Options: React.FC = () => {
+  const [showFilters, setShowFilters] = React.useState(false);
   const [currentQuery, setCurrentQuery] = React.useState<
     {
       name: string;
@@ -20,14 +21,18 @@ const Options: React.FC = () => {
 
   return (
     <div className={styles.OptionContainer}>
-      <h1>Filter your preferences</h1>
-      <section>
-        <MenuContainer
-          items={["WB", "AP", "GJ", "RJ", "JK", "SK", "NG", "KL"]}
-          name="location"
-          clickHandler={updateQueryHandler}
-        />
-      </section>
+      <h1 onClick={() => setShowFilters((prev) => !prev)}>
+        Filter your preferences
+      </h1>
+      {showFilters && (
+        <section>
+          <MenuContainer
+            items={["WB", "AP", "GJ", "RJ", "JK", "SK", "NG", "KL"]}
+            name="location"
+            clickHandler={updateQueryHandler}
+          />
+        </section>
+      )}
     </div>
   );
 };

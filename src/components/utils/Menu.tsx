@@ -1,5 +1,5 @@
 import React from "react";
-import { Dropdown, Menu } from "antd";
+import { Dropdown, Menu, Button } from "antd";
 
 interface MenuProps {
   items: string[];
@@ -10,6 +10,8 @@ interface MenuProps {
 const MenuContainer: React.FC<MenuProps> = ({ items, clickHandler, name }) => {
   return (
     <Dropdown
+      placement="bottomLeft"
+      arrow
       overlay={
         <Menu>
           {items.map((item, index) => (
@@ -20,7 +22,14 @@ const MenuContainer: React.FC<MenuProps> = ({ items, clickHandler, name }) => {
         </Menu>
       }
     >
-      {name}
+      <Button
+        type="primary"
+        style={{
+          textTransform: "capitalize",
+        }}
+      >
+        {name}
+      </Button>
     </Dropdown>
   );
 };
