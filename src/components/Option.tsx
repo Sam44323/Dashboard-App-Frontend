@@ -31,6 +31,26 @@ const Options: React.FC = () => {
             name="location"
             clickHandler={updateQueryHandler}
           />
+          <MenuContainer
+            items={["WB", "AP", "GJ", "RJ", "JK", "SK", "NG", "KL"]}
+            name="location"
+            clickHandler={updateQueryHandler}
+          />
+          <MenuContainer
+            items={["WB", "AP", "GJ", "RJ", "JK", "SK", "NG", "KL"]}
+            name="location"
+            clickHandler={updateQueryHandler}
+          />
+          <MenuContainer
+            items={["WB", "AP", "GJ", "RJ", "JK", "SK", "NG", "KL"]}
+            name="location"
+            clickHandler={updateQueryHandler}
+          />
+          <MenuContainer
+            items={["WB", "AP", "GJ", "RJ", "JK", "SK", "NG", "KL"]}
+            name="location"
+            clickHandler={updateQueryHandler}
+          />
         </section>
       )}
     </div>
