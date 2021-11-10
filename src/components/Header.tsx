@@ -8,7 +8,7 @@ const Header: React.FC = () => {
 
   return (
     <div className={styles.HeaderContainer}>
-      <h1> Dashboard App</h1>
+      <h1 onClick={() => push("/")}> Dashboard App</h1>
 
       <Button
         type="primary"

@@ -5,10 +5,13 @@
   padding: 1rem 1.6rem;
   max-width: 1400px;
   margin: 0 auto;
-  @media (max-width: 750px) {
-    flex-direction: column;
+  h1:hover {
+    cursor: pointer;
   }
   .button {
     padding: 0.4rem 4rem;
+  }
+  @media (max-width: 750px) {
+    flex-direction: column;
   }
 }
