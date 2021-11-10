@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "../styles/Options.module.scss";
 import MenuContainer from "./utils/Menu";
-import { Input } from "antd";
+import { Button, Input } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 
 const currentQuery = new Map<string, any>();
 const Options: React.FC = () => {
@@ -17,48 +18,56 @@ const Options: React.FC = () => {
         Filter your preferences
       </h1>
       {showFilters && (
-        <section>
-          <Input.Search
-            placeholder="College Name"
-            value={collegeName}
-            onChange={(e) => setCollegeName(e.target.value)}
-            style={{
-              width: "60%",
-            }}
-          />
-          <MenuContainer
-            items={["WB", "AP", "GJ", "RJ", "JK", "SK", "NG", "KL"]}
-            name="location"
-            clickHandler={updateQueryHandler}
-          />
-          <MenuContainer
-            items={[
-              "<100",
-              ">=100",
-              ">=500",
-              ">=900",
-              ">=1000",
-              ">=1500",
-              ">=3000",
-            ]}
-            name="students"
-            clickHandler={updateQueryHandler}
-          />
-          <MenuContainer
-            items={[
-              "CS",
-              "BCOM",
-              "BBA",
-              "MPhiL",
-              "DPhil",
-              "MSC",
-              "MBA",
-              "MCOM",
-            ]}
-            name="Course"
-            clickHandler={updateQueryHandler}
-          />
-        </section>
+        <>
+          <section>
+            <Input.Search
+              placeholder="College Name"
+              value={collegeName}
+              onChange={(e) => setCollegeName(e.target.value)}
+              style={{
+                width: "60%",
+              }}
+            />
+            <MenuContainer
+              items={["WB", "AP", "GJ", "RJ", "JK", "SK", "NG", "KL"]}
+              name="location"
+              clickHandler={updateQueryHandler}
+            />
+            <MenuContainer
+              items={[
+                "<100",
+                ">=100",
+                ">=500",
+                ">=900",
+                ">=1000",
+                ">=1500",
+                ">=3000",
+              ]}
+              name="students"
+              clickHandler={updateQueryHandler}
+            />
+            <MenuContainer
+              items={[
+                "CS",
+                "BCOM",
+                "BBA",
+                "MPhiL",
+                "DPhil",
+                "MSC",
+                "MBA",
+                "MCOM",
+              ]}
+              name="Course"
+              clickHandler={updateQueryHandler}
+            />
+          </section>
+          <div>
+            <Button className={styles.SearchButton}>
+              Search
+              <SearchOutlined />
+            </Button>
+          </div>
+        </>
       )}
     </div>
   );
