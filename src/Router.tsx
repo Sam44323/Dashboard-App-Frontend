@@ -10,7 +10,7 @@ const Router: React.FC = () => {
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/college" component={CollegeContainer} />
+        <Route path="/colleges" component={CollegeContainer} />
       </Switch>
     </>
   );
