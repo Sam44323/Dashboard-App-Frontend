@@ -63,7 +63,7 @@ const Options: React.FC = () => {
           </section>
           <div>
             <Button className={styles.SearchButton}>
-              Submit
+              Search
               <SearchOutlined />
             </Button>
           </div>
