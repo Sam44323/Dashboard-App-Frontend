@@ -16,9 +16,14 @@ const Options: React.FC = () => {
   };
 
   const submitQueryHandler = () => {
+    currentQuery.set("students", currentQuery.get("students").slice(1));
+    let [query, c] = ["", 0];
+    if (collegeName !== "") query += `name=${collegeName}&`;
     currentQuery.forEach((value, key) => {
-      console.log(value, key);
+      query += `${c > 0 && c < currentQuery.size ? "&" : ""}${key}=${value}`;
+      c++;
     });
+    console.log(query);
   };
 
   return (
@@ -45,7 +50,7 @@ const Options: React.FC = () => {
             />
             <MenuContainer
               items={[
-                "<100",
+                "<=100",
                 ">=100",
                 ">=500",
                 ">=900",
@@ -74,7 +79,11 @@ const Options: React.FC = () => {
             />
           </section>
           <div>
-            <Button className={styles.SearchButton}>
+            <Button
+              className={styles.SearchButton}
+              onClick={submitQueryHandler}
+              disabled={currentQuery.size === 0}
+            >
               Search
               <SearchOutlined />
             </Button>
