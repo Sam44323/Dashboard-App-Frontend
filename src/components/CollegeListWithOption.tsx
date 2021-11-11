@@ -123,6 +123,10 @@ const Options: React.FC = () => {
       )}
       {loading ? (
         <Spin
+          style={{
+            width: "100%",
+            marginTop: "70px",
+          }}
           indicator={
             <LoadingOutlined
               style={{
