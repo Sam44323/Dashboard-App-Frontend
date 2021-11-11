@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../styles/CollegeListWithOption.module.scss";
 import MenuContainer from "./utils/Menu";
 import { Button, Input } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
+import { DeleteOutlined, SearchOutlined } from "@ant-design/icons";
+import Axios from "../api/axios.config";
 
 const currentQuery = new Map<string, any>();
 const Options: React.FC = () => {
@@ -24,6 +25,12 @@ const Options: React.FC = () => {
       c++;
     });
     console.log(query);
+  };
+
+  const clearQueryHandler = () => {
+    currentQuery.clear();
+    setCollegeName("");
+    setState((prev) => !prev);
   };
 
   return (
@@ -87,9 +94,18 @@ const Options: React.FC = () => {
               Search
               <SearchOutlined />
             </Button>
+            <Button
+              className={styles.SearchButton}
+              onClick={clearQueryHandler}
+              disabled={currentQuery.size === 0}
+            >
+              Clear Query
+              <DeleteOutlined />
+            </Button>
           </div>
         </>
       )}
+      <section className={styles.CollegeListContainer}></section>
     </div>
   );
 };
