@@ -1,14 +1,20 @@
 import React, { useEffect } from "react";
 import styles from "../styles/CollegeListWithOption.module.scss";
 import MenuContainer from "./utils/Menu";
-import { Button, Input } from "antd";
-import { DeleteOutlined, SearchOutlined } from "@ant-design/icons";
+import { Button, Input, Spin } from "antd";
+import {
+  DeleteOutlined,
+  SearchOutlined,
+  LoadingOutlined,
+} from "@ant-design/icons";
 import Axios from "../api/axios.config";
 
 const currentQuery = new Map<string, any>();
 const Options: React.FC = () => {
   const [showFilters, setShowFilters] = React.useState(false);
   const [collegeName, setCollegeName] = React.useState<string>("");
+  const [loading, setLoading] = React.useState(false);
+  const [colleges, setColleges] = React.useState<any[]>([]);
   const [state, setState] = React.useState<boolean>(false);
 
   const updateQueryHandler = (optionName: string, value: any) => {
@@ -32,6 +38,16 @@ const Options: React.FC = () => {
     setCollegeName("");
     setState((prev) => !prev);
   };
+
+  useEffect(() => {
+    const getColleges = async () => {
+      setLoading(true);
+      const data = await Axios.get("/colleges");
+      console.log(data);
+      setLoading(false);
+    };
+    getColleges();
+  }, []);
 
   return (
     <div className={styles.OptionContainer}>
@@ -105,7 +121,21 @@ const Options: React.FC = () => {
           </div>
         </>
       )}
-      <section className={styles.CollegeListContainer}></section>
+      {loading ? (
+        <Spin
+          indicator={
+            <LoadingOutlined
+              style={{
+                fontSize: "30px",
+              }}
+            />
+          }
+        />
+      ) : colleges.length ? (
+        <section className={styles.CollegeListContainer}></section>
+      ) : (
+        <p>No colleges found 😔</p>
+      )}
     </div>
   );
 };
