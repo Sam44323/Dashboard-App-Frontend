@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styles from "../styles/CollegeListWithOption.module.scss";
 import MenuContainer from "./utils/Menu";
 import { Button, Spin } from "antd";
+import { useHistory } from "react-router";
 import {
   DeleteOutlined,
   SearchOutlined,
@@ -15,6 +16,7 @@ const Options: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
   const [colleges, setColleges] = React.useState<any[]>([]);
   const [state, setState] = React.useState<boolean>(false);
+  const { push } = useHistory();
 
   const updateQueryHandler = (optionName: string, value: any) => {
     currentQuery.set(optionName, value);
@@ -135,7 +137,10 @@ const Options: React.FC = () => {
       ) : colleges.length ? (
         <section className={styles.CollegeListContainer}>
           {colleges.map((college) => (
-            <div className={styles.Card}>
+            <div
+              className={styles.Card}
+              onClick={() => push(`/college/${college._id}`)}
+            >
               <h1>{college.college_name}</h1>
               <p>Founded On: {college.founded_on}</p>
               <p>Students Count: {college.no_students}</p>
