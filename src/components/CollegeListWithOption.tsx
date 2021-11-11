@@ -39,14 +39,15 @@ const Options: React.FC = () => {
     setState((prev) => !prev);
   };
 
+  const getColleges = async () => {
+    setLoading(true);
+    const response = await Axios.get("/colleges");
+    console.log(response.data.colleges);
+    setColleges(response.data.colleges);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    const getColleges = async () => {
-      setLoading(true);
-      const response = await Axios.get("/colleges");
-      console.log(response.data.colleges);
-      setColleges(response.data.colleges);
-      setLoading(false);
-    };
     getColleges();
   }, []);
 
