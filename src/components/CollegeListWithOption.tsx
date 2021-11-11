@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "../styles/CollegeListWithOption.module.scss";
 import MenuContainer from "./utils/Menu";
-import { Button, Input, Spin } from "antd";
+import { Button, Spin } from "antd";
 import {
   DeleteOutlined,
   SearchOutlined,
@@ -12,7 +12,6 @@ import Axios from "../api/axios.config";
 const currentQuery = new Map<string, any>();
 const Options: React.FC = () => {
   const [showFilters, setShowFilters] = React.useState(false);
-  const [collegeName, setCollegeName] = React.useState<string>("");
   const [loading, setLoading] = React.useState(false);
   const [colleges, setColleges] = React.useState<any[]>([]);
   const [state, setState] = React.useState<boolean>(false);
@@ -22,26 +21,30 @@ const Options: React.FC = () => {
     setState((prev) => !prev);
   };
 
-  const submitQueryHandler = () => {
-    currentQuery.set("students", currentQuery.get("students").slice(1));
+  const submitQueryHandler = async () => {
+    if (currentQuery.get("students")) {
+      currentQuery.set("students", currentQuery.get("students").slice(2));
+    }
     let [query, c] = ["", 0];
-    if (collegeName !== "") query += `name=${collegeName}&`;
     currentQuery.forEach((value, key) => {
       query += `${c > 0 && c < currentQuery.size ? "&" : ""}${key}=${value}`;
       c++;
     });
     console.log(query);
+    await getColleges(query);
   };
 
   const clearQueryHandler = () => {
     currentQuery.clear();
-    setCollegeName("");
     setState((prev) => !prev);
   };
 
   const getColleges = async (params?: string) => {
     setLoading(true);
-    const response = await Axios.get(`/colleges${params ? "?" + params : ""}`);
+    console.log(params);
+    const response = await Axios.get(
+      `/${!params ? "colleges" : "college"}${params ? "?" + params : ""}`
+    );
     console.log(response.data.colleges);
     setColleges(response.data.colleges);
     setLoading(false);
@@ -59,14 +62,6 @@ const Options: React.FC = () => {
       {showFilters && (
         <>
           <section className={styles.FilterSection}>
-            <Input.Search
-              placeholder="College Name"
-              value={collegeName}
-              onChange={(e) => setCollegeName(e.target.value)}
-              style={{
-                width: "49%",
-              }}
-            />
             <MenuContainer
               items={["WB", "AP", "GJ", "RJ", "JK", "SK", "NG", "KL"]}
               name="location"
