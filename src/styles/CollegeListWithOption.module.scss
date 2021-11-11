@@ -33,9 +33,37 @@
       }
     }
   }
-  p {
-    font-size: 1.5rem;
-    text-align: center;
-    margin-top: 3rem;
+
+  .CollegeListContainer {
+    display: grid;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0;
+    grid-template-columns: auto auto;
+    .Card {
+      h1,
+      p,
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        text-align: left;
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+      h1 {
+        background-color: transparent;
+        color: black;
+        width: 100%;
+      }
+    }
+
+    p {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-top: 3rem;
+      text-align: left;
+    }
   }
 }

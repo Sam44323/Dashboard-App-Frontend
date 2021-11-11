@@ -42,8 +42,9 @@ const Options: React.FC = () => {
   useEffect(() => {
     const getColleges = async () => {
       setLoading(true);
-      const data = await Axios.get("/colleges");
-      console.log(data);
+      const response = await Axios.get("/colleges");
+      console.log(response.data.colleges);
+      setColleges(response.data.colleges);
       setLoading(false);
     };
     getColleges();
@@ -136,7 +137,23 @@ const Options: React.FC = () => {
           }
         />
       ) : colleges.length ? (
-        <section className={styles.CollegeListContainer}></section>
+        <section className={styles.CollegeListContainer}>
+          {colleges.map((college) => (
+            <div className={styles.Card}>
+              <h1>{college.college_name}</h1>
+              <p>Founded On: {college.founded_on}</p>
+              <p>Students Count: {college.no_students}</p>
+              <p>
+                State: {college.state_name} | City: {college.city_name}
+              </p>
+              <ul>
+                {college.courses_offered.map((course: any, index: any) => (
+                  <li key={index}>{course}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
       ) : (
         <p>No colleges found 😔</p>
       )}
