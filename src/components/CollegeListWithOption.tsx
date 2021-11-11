@@ -39,9 +39,9 @@ const Options: React.FC = () => {
     setState((prev) => !prev);
   };
 
-  const getColleges = async () => {
+  const getColleges = async (params?: string) => {
     setLoading(true);
-    const response = await Axios.get("/colleges");
+    const response = await Axios.get(`/colleges${params ? "?" + params : ""}`);
     console.log(response.data.colleges);
     setColleges(response.data.colleges);
     setLoading(false);
