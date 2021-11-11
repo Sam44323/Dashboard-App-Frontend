@@ -15,12 +15,10 @@
   section {
     display: flex;
     justify-content: space-evenly;
-    max-width: 800px;
     margin: 0 auto;
     margin-top: 3rem;
   }
   div {
-    text-align: center;
     margin-top: 1.8rem;
     .SearchButton {
       background-color: black;
@@ -35,17 +33,30 @@
   }
 
   .CollegeListContainer {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
-    justify-content: space-between;
-    margin: 0;
-    grid-template-columns: auto auto;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    grid-template-columns: auto auto auto auto;
+    gap: 1rem 0.1rem;
     .Card {
+      padding: 1.8rem 1.4rem;
+      background-color: black;
+      color: white;
+      border-radius: 10px;
+      width: 18rem;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+      }
       h1,
       p,
       ul {
         margin: 0;
         padding: 0;
+        text-align: left;
       }
       li {
         text-align: left;
@@ -54,16 +65,18 @@
       }
       h1 {
         background-color: transparent;
-        color: black;
         width: 100%;
+        font-size: 2.4rem;
+        &:hover {
+          transform: none;
+        }
       }
     }
 
     p {
-      font-size: 1.5rem;
+      font-size: 1rem;
       text-align: center;
       margin-top: 3rem;
-      text-align: left;
     }
   }
 }
