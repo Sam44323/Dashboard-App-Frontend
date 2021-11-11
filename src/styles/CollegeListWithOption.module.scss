@@ -43,7 +43,7 @@
     grid-template-columns: auto auto auto auto;
     gap: 1rem 0.1rem;
     margin-top: 3rem;
-    @media (max-width: 700px) {
+    @media (max-width: 1200px) {
       justify-content: center;
     }
     .Card {

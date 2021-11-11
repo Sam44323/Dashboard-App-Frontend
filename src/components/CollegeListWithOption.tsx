@@ -47,7 +47,6 @@ const Options: React.FC = () => {
     const response = await Axios.get(
       `/${!params ? "colleges" : "college"}${params ? "?" + params : ""}`
     );
-    console.log(response.data.colleges);
     setColleges(response.data.colleges);
     setLoading(false);
   };
