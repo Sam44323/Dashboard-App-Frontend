@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../styles/CollegeContainer.module.scss";
-import Options from "./Option";
+import Options from "./CollegeListWithOption";
 
 const CollegeContainer: React.FC = () => {
   return (

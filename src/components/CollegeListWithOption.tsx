@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/Options.module.scss";
+import styles from "../styles/CollegeListWithOption.module.scss";
 import MenuContainer from "./utils/Menu";
 import { Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
