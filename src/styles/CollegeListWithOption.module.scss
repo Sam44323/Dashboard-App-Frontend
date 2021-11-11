@@ -38,11 +38,14 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     margin: 0 auto;
     grid-template-columns: auto auto auto auto;
     gap: 1rem 0.1rem;
     margin-top: 3rem;
+    @media (max-width: 700px) {
+      justify-content: center;
+    }
     .Card {
       padding: 1.8rem 1.4rem;
       background-color: black;
@@ -50,6 +53,9 @@
       border-radius: 10px;
       width: 18rem;
       transition: all 0.3s ease-in-out;
+      @media (min-width: 1300px) {
+        margin: 0 2.1rem;
+      }
       &:hover {
         transform: scale(1.05);
         cursor: pointer;
