@@ -12,14 +12,16 @@
       cursor: pointer;
     }
   }
-  section {
+  .FilterSection {
     display: flex;
     justify-content: space-evenly;
     margin: 0 auto;
     margin-top: 3rem;
+    max-width: 900px;
   }
-  div {
-    margin-top: 1.8rem;
+  .ButtonSection {
+    text-align: center;
+    margin: 3.8rem 0;
     .SearchButton {
       background-color: black;
       color: white;

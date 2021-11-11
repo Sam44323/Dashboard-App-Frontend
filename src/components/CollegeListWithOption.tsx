@@ -58,7 +58,7 @@ const Options: React.FC = () => {
       </h1>
       {showFilters && (
         <>
-          <section>
+          <section className={styles.FilterSection}>
             <Input.Search
               placeholder="College Name"
               value={collegeName}
@@ -103,7 +103,7 @@ const Options: React.FC = () => {
               sideName={currentQuery.get("course")}
             />
           </section>
-          <div>
+          <div className={styles.ButtonSection}>
             <Button
               className={styles.SearchButton}
               onClick={submitQueryHandler}
