@@ -64,13 +64,14 @@ const Options: React.FC = () => {
 
   return (
     <div className={styles.OptionContainer}>
-      {!showError && (
+      {showError && (
         <Alert
           message="Network Error"
           description="Cant' fetch the data's at this moment. Please try again!"
           type="error"
           style={{
             width: "18%",
+            maxWidth: "1000px",
             position: "absolute",
             top: "1%",
             right: "0%",
