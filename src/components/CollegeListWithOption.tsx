@@ -177,7 +177,15 @@ const Options: React.FC = () => {
           ))}
         </section>
       ) : (
-        <p>No colleges found 😔</p>
+        <p
+          style={{
+            textAlign: "center",
+            margin: "2.4rem 0",
+            fontSize: "1.6rem",
+          }}
+        >
+          No colleges found 😔
+        </p>
       )}
     </div>
   );
