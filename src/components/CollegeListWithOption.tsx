@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "../styles/CollegeListWithOption.module.scss";
 import MenuContainer from "./utils/Menu";
-import { Button, Spin } from "antd";
+import { Button, Spin, Alert } from "antd";
 import { useHistory } from "react-router";
 import {
   DeleteOutlined,
@@ -15,6 +15,7 @@ const Options: React.FC = () => {
   const [showFilters, setShowFilters] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [colleges, setColleges] = React.useState<any[]>([]);
+  const [showError, setShowError] = React.useState<boolean>(false);
   const [state, setState] = React.useState<boolean>(false);
   const { push } = useHistory();
 
@@ -42,13 +43,19 @@ const Options: React.FC = () => {
   };
 
   const getColleges = async (params?: string) => {
-    setLoading(true);
-    console.log(params);
-    const response = await Axios.get(
-      `/${!params ? "colleges" : "college"}${params ? "?" + params : ""}`
-    );
-    setColleges(response.data.colleges);
-    setLoading(false);
+    try {
+      setLoading(true);
+      console.log(params);
+      const response = await Axios.get(
+        `/${!params ? "colleges" : "college"}${params ? "?" + params : ""}`
+      );
+      setColleges(response.data.colleges);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      setShowError(true);
+      setTimeout(() => setShowError(false), 1800);
+    }
   };
 
   useEffect(() => {
@@ -57,6 +64,20 @@ const Options: React.FC = () => {
 
   return (
     <div className={styles.OptionContainer}>
+      {!showError && (
+        <Alert
+          message="Network Error"
+          description="Cant' fetch the data's at this moment. Please try again!"
+          type="error"
+          style={{
+            width: "18%",
+            position: "absolute",
+            top: "1%",
+            right: "0%",
+          }}
+          showIcon
+        />
+      )}
       <h1 onClick={() => setShowFilters((prev) => !prev)}>
         Filter your preferences
       </h1>
