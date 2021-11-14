@@ -10,12 +10,34 @@ const CollegeDetails: React.FC = () => {
     const getCollege = async () => {
       const response = await Axios.get(`/college?id=${(params as any).id}`);
       console.log(response.data.colleges[0]);
+      setCollegeData(response.data.colleges[0]);
     };
 
     getCollege();
-  }, [params]);
+  }, []);
 
-  return <></>;
+  return (
+    <div className={styles.DetailsContainer}>
+      {collegeData && (
+        <>
+          <section className={styles.TopContainer}>
+            <h1>{collegeData.college_name}</h1>
+            <section className={styles.SubDetails}>
+              <p>{collegeData.state_name}</p>
+              <p>{collegeData.city_name}</p>
+              <p>{collegeData.no_students}</p>
+              <p>{collegeData.state_name}</p>
+            </section>
+          </section>
+          <section className={styles.CoursesContainer}>
+            {collegeData.courses_offered.map((item: any, index: any) => (
+              <p key={index}>{item}</p>
+            ))}
+          </section>
+        </>
+      )}
+    </div>
+  );
 };
 
 export default CollegeDetails;
