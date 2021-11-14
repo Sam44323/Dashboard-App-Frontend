@@ -37,9 +37,10 @@ const Options: React.FC = () => {
     await getColleges(query);
   };
 
-  const clearQueryHandler = () => {
+  const clearQueryHandler = async () => {
     currentQuery.clear();
     setState((prev) => !prev);
+    getColleges();
   };
 
   const getColleges = async (params?: string) => {
