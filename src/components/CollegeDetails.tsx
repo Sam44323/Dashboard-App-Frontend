@@ -30,9 +30,12 @@ const CollegeDetails: React.FC = () => {
             </section>
           </section>
           <section className={styles.CoursesContainer}>
-            {collegeData.courses_offered.map((item: any, index: any) => (
-              <p key={index}>{item}</p>
-            ))}
+            <p className={styles.Title}>Courses Offered</p>
+            <div>
+              {collegeData.courses_offered.map((item: any, index: any) => (
+                <p key={index}>{item}</p>
+              ))}
+            </div>
           </section>
         </>
       )}
