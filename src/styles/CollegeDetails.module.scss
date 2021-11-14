@@ -1,0 +1,43 @@
+.DetailsContainer {
+  .TopContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    h1,
+    .Details {
+      text-align: center;
+      font-size: 2.5rem;
+      color: white;
+      background-color: black;
+      width: 40%;
+      margin: 0 auto;
+      margin-top: 1.8rem;
+      border-radius: 10px;
+    }
+    .Details {
+      color: black;
+      background-color: white;
+      font-size: 1.7rem;
+      margin: 1rem auto;
+      border-radius: 0px;
+      border-bottom: 4px solid black;
+    }
+    .SubDetails {
+      display: flex;
+      justify-content: space-between;
+      width: 40%;
+      margin: 0 auto;
+      max-width: 600px;
+      p {
+        font-size: 1.1rem;
+        padding: 0.4rem 1rem;
+        border-radius: 14px;
+        &:hover {
+          background-color: black;
+          color: white;
+          padding: 0.4rem 1rem;
+          cursor: text;
+        }
+      }
+    }
+  }
+}

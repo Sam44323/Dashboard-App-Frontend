@@ -22,11 +22,11 @@ const CollegeDetails: React.FC = () => {
         <>
           <section className={styles.TopContainer}>
             <h1>{collegeData.college_name}</h1>
+            <p className={styles.Details}>Details</p>
             <section className={styles.SubDetails}>
-              <p>{collegeData.state_name}</p>
-              <p>{collegeData.city_name}</p>
-              <p>{collegeData.no_students}</p>
-              <p>{collegeData.state_name}</p>
+              <p>State: {collegeData.state_name}</p>
+              <p>City: {collegeData.city_name}</p>
+              <p>Student Count: {collegeData.no_students}</p>
             </section>
           </section>
           <section className={styles.CoursesContainer}>
