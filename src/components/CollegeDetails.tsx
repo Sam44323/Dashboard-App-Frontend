@@ -8,7 +8,6 @@ const CollegeDetails: React.FC = () => {
   const [collegeData, setCollegeData] = React.useState<any>();
   React.useEffect(() => {
     const getCollege = async () => {
-      console.log(params);
       const response = await Axios.get(`/college?id=${(params as any).id}`);
       console.log(response.data.colleges[0]);
     };
